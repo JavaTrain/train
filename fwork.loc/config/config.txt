@@ -1,0 +1,2 @@
+mysql*host|localhost_txt|username|root_txt|password|123_txt|db|chrisdb_txt
+session*session_name|user_txt|token_name|token_txt

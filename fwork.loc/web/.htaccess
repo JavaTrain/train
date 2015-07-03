@@ -1,0 +1,20 @@
+# Запрещаем просмотр списков в каталогах
+IndexIgnore *
+
+# Вкл. модуль перезаписи
+RewriteEngine On
+
+# Указываем базовый путь
+RewriteBase /
+
+# Если запросили какой-л ресурс, отличающийся от index.php, ...
+RewriteCond %{REQUEST_URI} !^/index\.php
+
+# И этот ресурс не является существующим файлом...
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Или папкой...
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# То переадресовываем всё на файл index.php
+RewriteRule .* index.php [L]

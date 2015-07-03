@@ -1,0 +1,15 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block body -%}
+<div class="container">
+    <h1>Course creation</h1>
+
+    {{ form(form) }}
+
+    <a class="btn btn-primary" href="{{ path('course') }}">
+        Back to the courses list
+    </a>
+</div>
+{% endblock %}

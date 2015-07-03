@@ -1,0 +1,62 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% block title %}User test{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+
+        {% if auth is defined %}
+            <a href="{{ path('fos_user_profile_show')}}"><p><b>{{ auth.name }}</b></p></a>
+        {% endif %}
+
+
+        {% if users is defined %}
+        <table class="table my-style">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Course</th>
+                <th>Group</th>
+                <th>Payments</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.name }}</a></td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.status }}</td>
+                    <td>
+                        {% for course in user.courses %}
+                            <a href="{{ path('course_show', { 'id':course.id }) }}">{{ course.name }}</a>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% for group in user.clusters %}
+                            <a href="{{ path('cluster_show', { 'id':group.id }) }}">{{ group.room }}</a>
+                        {% endfor %}
+                    </td>
+                    <td><a href="{{ path('user_payments', { 'id':user.id }) }}">{{ user.name }} payments</a></td>
+                    <td><a href="{{ path('user_edit', { 'id':user.id }) }}">Edit</a></td>
+                    <td><a href="{{ path('user_delete', { 'id':user.id }) }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        <br />
+
+        {#<a class="btn btn-primary btn-lg btn-block" href="{{ path('user_new') }}">#}
+            {#Create new person#}
+        {#</a>#}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+#services:
+#    home_test.example:
+#        class: Home\TestBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+services:
+    home_test.registration.form.type:
+        class: Home\TestBundle\Form\RegFormType
+        tags:
+            - { name: form.type, alias: home_test_registration }

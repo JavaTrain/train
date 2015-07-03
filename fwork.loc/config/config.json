@@ -1,0 +1,14 @@
+{
+"mysql":
+	{
+	"host":"127.0.0.1_json",
+	"username":"root_json",
+	"password":"123_json",
+	"db":"chrisdb_json"
+	},
+"session":
+	{
+	"session_name":"user_json",
+	"token_name":"token_json"
+	}
+}

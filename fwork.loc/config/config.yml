@@ -1,0 +1,12 @@
+mysql:
+  type: "mysql"
+  host: "127.0.0.1"
+  username: "root"
+  pass: "123"
+  db: "chrisdb"
+session:
+  session_name: "user"
+
+remember:
+  cookie_name: "hash"
+  cookie_expiry: 604800

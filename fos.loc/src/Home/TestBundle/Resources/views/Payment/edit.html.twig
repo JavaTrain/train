@@ -1,0 +1,24 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block body -%}
+<div class="container">
+    <h1>Payment edit</h1>
+
+    {{ form(edit_form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('pay') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+
+    <a class="btn btn-primary" href="{{ path('cluster') }}">
+        Back to the groups list
+    </a>
+</div>
+{% endblock %}

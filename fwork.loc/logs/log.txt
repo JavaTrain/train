@@ -1,0 +1,5 @@
+"2015-06-29 23:52:23"|ERROR|--|"Wrong route [/ntnytyn] & Code 0/home/lamp/www/fwork.loc/Core/Application.php92"|16|/home/lamp/www/fwork.loc/web/index.php
+"2015-06-29 23:52:46"|ERROR|--|"Wrong route [/ntnytyn] & Code 0/home/lamp/www/fwork.loc/Core/Application.php96"|16|/home/lamp/www/fwork.loc/web/index.php
+"2015-06-30 00:07:15"|ERROR|--|"Wrong route [/edit/%7Bid%7D/%7Baction%7D] & Code 0/home/lamp/www/fwork.loc/Core/Application.php96"|16|/home/lamp/www/fwork.loc/web/index.php
+"2015-06-30 00:24:42"|ERROR|--|"Wrong route [/] & Code 0/home/lamp/www/fwork.loc/Core/Application.php96"|16|/home/lamp/www/fwork.loc/web/index.php
+"2015-06-30 00:38:51"|ERROR|--|"Wrong route [/] & Code 0/home/lamp/www/fwork.loc/Core/Application.php96"|16|/home/lamp/www/fwork.loc/web/index.php

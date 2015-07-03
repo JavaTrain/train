@@ -1,0 +1,20 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block body -%}
+<div class="container">
+    <h1>Cluster creation</h1>
+
+    {{ form(form) }}
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('cluster') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+
+</div>
+{% endblock %}

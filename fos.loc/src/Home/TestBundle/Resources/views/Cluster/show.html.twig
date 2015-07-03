@@ -1,0 +1,71 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <h1>Group {{ entity.room }}</h1>
+
+        <table class="table my-style records_list">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Room</th>
+                <td>{{ entity.room }}</td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td> <a href="{{ path('course_show', { 'id': entity.course.id }) }}">{{ entity.course }}</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h2>Users in the group {{ entity.room }} </h2>
+
+        <table class="table my-style">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>Payments</th>
+                    <th>Edit</th>
+                {% endif %}
+            </tr>
+            {% for user in entity.users %}
+                <tr>
+                    {#<td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.name }}</a></td>#}
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.status }}</td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td><a href="{{ path('payments_show', { 'gid':entity.id,'uid':user.id }) }}">{{ user.name }} payments</a></td>
+                        <td><a href="{{ path('user_edit', { 'id':user.id }) }}">Edit</a></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        <a href="{{ path('payments_show', { 'gid':entity.id,'uid':self.id }) }}">{{ self.name }} payments in the group {{entity.room}}</a>
+
+
+        <ul class="record_actions">
+            <li>
+                <a class="btn btn-primary" href="{{ path('cluster') }}">
+                    Back to the groups list
+                </a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a class="btn btn-primary" href="{{ path('cluster_edit', { 'id': entity.id }) }} ">
+                        Edit
+                    </a>
+                </li>
+                {{ form(delete_form) }}
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

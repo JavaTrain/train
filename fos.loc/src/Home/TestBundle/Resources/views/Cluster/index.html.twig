@@ -1,0 +1,50 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+
+    <div class="container">
+        <h1>Groups list</h1>
+    {% if entities !=  false %}
+        <table class="table my-style records_list">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Room</th>
+                <th>Course</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('cluster_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td><a href="{{ path('cluster_show', { 'id': entity.id }) }}">{{ entity.room }}</a></td>
+                    <td><a href="{{ path('course_show', { 'id': entity.course.id }) }}">{{ entity.course }}</a></td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('cluster_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li>
+                                    <a href="{{ path('cluster_edit', { 'id': entity.id }) }}">edit</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have not any group</p>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-primary btn-block btn-lg" href="{{ path('cluster_new') }}">
+            Create a new entry
+        </a>
+    {% endif %}
+    </div>
+{% endblock %}

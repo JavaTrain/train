@@ -1,0 +1,71 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+    <h1>Payments</h1>
+
+    <h2>User Info</h2>
+
+    <table class="table record_properties my-style">
+        <tbody>
+            <tr>
+                <th>User</th>
+                <td><a href="{{ path('user_show', { 'id': entities[0].user.id }) }}">{{ entities[0].user.name }}</a></td>
+            </tr>
+            <tr>
+                <th>User email</th>
+                <td>{{ entities[0].user.email }}</td>
+            </tr>
+            {#<tr>#}
+                {#<th>Course</th>#}
+                {#<td><a href="{{ path('course_show', { 'id': entities[0].group.course.id }) }}">{{ entities[0].group.course.name }}</a></td>#}
+            {#</tr>#}
+            {#<tr>#}
+                {#<th>Group</th>#}
+                {#<td><a href="{{ path('group_show', { 'id': entities[0].group.id }) }}">{{ entities[0].group.room }}</a></td>#}
+            {#</tr>#}
+        </tbody>
+    </table>
+
+    <h3>Paymetnts table</h3>
+
+    <table class="table my-style">
+        <tr>
+            <th>Payment Id</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Group</th>
+            <th>Course</th>
+        </tr>
+        {% for payment in entities %}
+            <tr>
+                <td><a href="{{ path('pay_show', { 'id': payment.id }) }}">{{ payment.id }}</a></td>
+                <td>{{ payment.amount }}</td>
+                <td>TODO</td>
+                <td><a href="{{ path('cluster_show', { 'id': payment.cluster.id }) }}">{{ payment.cluster.room }}</a></td>
+                <td><a href="{{ path('course_show', { 'id': payment.cluster.course.id }) }}">{{ payment.cluster.course.name }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
+
+
+        {#<ul class="record_actions">#}
+    <li>
+        <a href="{{ path('user') }}">
+            Back to the users list
+        </a>
+    </li>
+    {#<li>#}
+        {#<a href="{{ path('pay_edit', { 'id': entity.id }) }}">#}
+            {#Edit#}
+        {#</a>#}
+    {#</li>#}
+    {#<li>{{ form(delete_form) }}</li>#}
+{#</ul>#}
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'HomeTestBundle::layout.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+    <h1>Payments</h1>
+
+    <h2>User Info</h2>
+
+    <table class="table record_properties my-style">
+        <tbody>
+            <tr>
+                <th>User</th>
+                {#<td><a href="{{ path('user_show', { 'id': entities[0].user.id }) }}">{{ entities[0].user.name }}</a></td>#}
+                <td>{{ entities[0].user.name }}</td>
+            </tr>
+            <tr>
+                <th>User email</th>
+                <td>{{ entities[0].user.email }}</td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td><a href="{{ path('course_show', { 'id': entities[0].cluster.course.id }) }}">{{ entities[0].cluster.course.name }}</a></td>
+            </tr>
+            <tr>
+                <th>Group</th>
+                <td><a href="{{ path('cluster_show', { 'id': entities[0].cluster.id }) }}">{{ entities[0].cluster.room }}</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Paymetnts table</h3>
+
+    <table class="table my-style">
+        <tr>
+            <th>Payment Id</th>
+            <th>Amount</th>
+            <th>Date</th>
+        </tr>
+        {% for payment in entities %}
+            <tr>
+                <td><a href="{{ path('pay_show', { 'id': payment.id }) }}">{{ payment.id }}</a></td>
+                <td>{{ payment.amount }}</td>
+                <td>TODO</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+        <h2>Price for {{ entities[0].cluster.course.name }} course is <b>{{ entities[0].cluster.course.price }}</b></h2>
+
+        {% if loan != 0 %}
+            <h3>Loan: <b style="color: red">{{ loan }}</b></h3>
+        {% else %}
+            <h2 style="color: green">Course have payed</h2>
+        {% endif %}
+
+
+
+
+        {#<ul class="record_actions">#}
+    {#<li>#}
+        <a href="{{ path('pay') }}">
+            Back to the payments list
+        </a>
+    {#</li>#}
+    {#<li>#}
+        {#<a href="{{ path('pay_edit', { 'id': entity.id }) }}">#}
+            {#Edit#}
+        {#</a>#}
+    {#</li>#}
+    {#<li>{{ form(delete_form) }}</li>#}
+{#</ul>#}
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container">
+    <div class="fos_user_user_show">
+        <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+        <p>Name: {{ user.name }}</p>
+        <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+        <p>{{ 'profile.show.status'|trans }}: {{ user.status }}</p>
+
+        {% if user.status == 'couch' %}
+            <p>Courses: {% for course in user.courses %}
+                <a href="{{ path('course_show', { 'id':course.id }) }}">{{ course.name }}</a>
+            {% endfor %}</p>
+        {% endif %}
+        <p>Groups: {% for group in user.clusters %}
+            <a href="{{ path('cluster_show', { 'id':group.id }) }}">{{ group.room }}</a>
+        {% endfor %}</p>
+
+    </div>
+</div>
